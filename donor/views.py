@@ -9,27 +9,27 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from .models import Donor
 from .forms import DonorForm
 
-# ListView for displaying all donors
+
 class DonorListView(ListView):
     model = Donor
     template_name = 'donors/donor_list.html'
     context_object_name = 'donors'
 
-# CreateView for adding a new donor
+
 class DonorCreateView(CreateView):
     model = Donor
     form_class = DonorForm
-    template_name = 'donors/donor_form.html'  # The template for the form
+    template_name = 'donors/donor_form.html'  
 
     def form_valid(self, form):
-        # Optionally, you can add extra processing here, if needed
+    
         return super().form_valid(form)
 
     def get_success_url(self):
-        # Redirect after a successful form submission
-        return reverse('donor:donor_list')  # Or any URL of your choice
+       
+        return reverse('donor:donor_list')  
     
-# UpdateView for editing an existing donor
+
 class DonorUpdateView(UpdateView):
     model = Donor
     template_name = 'donors/donor_form.html'
@@ -39,7 +39,7 @@ class DonorUpdateView(UpdateView):
     def form_valid(self, form):
         return super().form_valid(form)
 
-# DeleteView for confirming and deleting a donor
+
 class DonorDeleteView(DeleteView):
     model = Donor
     template_name = 'donors/donor_confirm_delete.html'
