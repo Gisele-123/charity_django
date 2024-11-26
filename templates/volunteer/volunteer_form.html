@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create/Edit Volunteer</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h2>{% if volunteer %}Edit Volunteer{% else %}Create Volunteer{% endif %}</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">{% if volunteer %}Update Volunteer{% else %}Create Volunteer{% endif %}</button>
+    </form>
+    <a href="{% url 'volunteer_list' %}">Back to Volunteer List</a>
+</body>
+</html>

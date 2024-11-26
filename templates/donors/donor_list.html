@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donor List</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h2>Donor List</h2>
+    <a href="{% url 'donor:donor_create' %}">Add Donor</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Donor Name</th>
+                <th>Email</th>
+                <th>Amount Donated</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for donor in donors %}
+            <tr>
+                <td>{{ donor.name }}</td>
+                <td>{{ donor.email }}</td>
+                <td>{{ donor.amount_donated }}</td>
+                <td>
+                    <a href="{% url 'donor:donor_edit' donor.id %}">Edit</a> |
+                    <a href="{% url 'donor:donor_delete' donor.id %}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

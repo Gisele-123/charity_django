@@ -1,0 +1,43 @@
+{% extends 'base_generic.html' %}
+{% load static %}
+
+{% block content %}
+<div class="dashboard-container">   
+
+    <!-- Main Dashboard Content -->
+    <main>
+        <!-- Donor Data -->
+        <section>
+            <h2>Donor Data (Last 7 Days)</h2>
+            <canvas id="donorChart" width="400" height="200"></canvas>
+        </section>
+
+        <!-- Volunteer Data -->
+        <section>
+            <h2>Volunteer Data (Last 7 Days)</h2>
+            <canvas id="volunteerChart" width="400" height="200"></canvas>
+        </section>
+
+        <!-- Event Data -->
+        <section>
+            <h2>Event Data (Last 7 Days)</h2>
+            <canvas id="eventChart" width="400" height="200"></canvas>
+        </section>
+
+        <!-- Summary -->
+        <section>
+            <h2>Summary</h2>
+            <p>Total Volunteers: {{ volunteers|length }}</p>
+            <p>Total Donors: {{ donors|length }}</p>
+            <p>Total Events: {{ events|length }}</p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Charity Management System. All rights reserved.</p>
+    </footer>
+</div>
+
+<script src="{% static 'js/dashboard.js' %}"></script>
+{% endblock %}

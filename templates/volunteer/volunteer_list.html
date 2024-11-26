@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer List</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h2>Volunteer List</h2>
+    <a href="{% url 'volunteer_create' %}">Add Volunteer</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Volunteer Name</th>
+                <th>Event</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for volunteer in volunteers %}
+            <tr>
+                <td>{{ volunteer.name }}</td>
+                <td>{{ volunteer.event.name }}</td>
+                <td>
+                    <a href="{% url 'volunteer_edit' volunteer.id %}">Edit</a> |
+                    <a href="{% url 'volunteer_delete' volunteer.id %}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create/Edit Event</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h2>{% if event %}Edit Event{% else %}Create Event{% endif %}</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">{% if event %}Update Event{% else %}Create Event{% endif %}</button>
+    </form>
+    <a href="{% url 'event:event_list' %}">Back to Events List</a>
+</body>
+</html>
